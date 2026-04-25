@@ -1216,6 +1216,11 @@ function BeeSwarmSimulator(DATA){
             minX:23.5-3,maxX:23.5+3,minY:-2,maxY:2,minZ:41-2-3,maxZ:41-2+3
         },
 
+        atomicTreat:{
+            
+            minX:23.5-3-6,maxX:23.5+3-6,minY:-2,maxY:2,minZ:41-2-3,maxZ:41-2+3
+        },
+
         royalJelly_shop:{
             
             minX:33.5-3,maxX:33.5+3,minY:7,maxY:13,minZ:49.75-3,maxZ:49.75+3
@@ -1865,9 +1870,9 @@ function BeeSwarmSimulator(DATA){
                 if(!player.extraInfo.sproutSummoner)
                     player.extraInfo.sproutSummoner=1
 
-                if(Date.now()-player.extraInfo.sproutSummoner<2*60*60*1000){
+                if(Date.now()-player.extraInfo.sproutSummoner<5*60*1000){
 
-                    return "The Sprout Summoner is on cooldown! ("+MATH.doTime((2*60*60-(Date.now()-player.extraInfo.sproutSummoner)*0.001)+'')+')'
+                    return "The Sprout Summoner is on cooldown! ("+MATH.doTime((5*60-(Date.now()-player.extraInfo.sproutSummoner)*0.001)+'')+')'
                 }
                 
             },minX:31-2,maxX:31+2,minY:2,maxY:8,minZ:10.5-2,maxZ:10.5+2,message:'Use Sprout Summoner',func:function(player){
@@ -25974,12 +25979,9 @@ function BeeSwarmSimulator(DATA){
 
                 document.getElementById('blenderName').innerHTML="Crafting"+'.'.repeat((TIME|0)%5)+"<div style='position:fixed;left:50%;top:175%;transform:translate(-50%,-50%);width:200px;height:25px;border-radius:2px;border:1.5px solid black;background-color:rgb(150,0,0)'><div style='height:25px;width:"+(200-p*200)+"px;background-color:rgb(0,200,0)'></div><p style='color:white;font-size:16px;position:fixed;left:50%;top:-20%;transform:translate(-50%,-50%)'>"+MATH.doTime(Math.max(player.isCrafting.time-TIME,0))+"</p><p style='color:white;font-size:20px;position:fixed;left:-40%;top:200%;transform:translate(-50%,-50%)'>"+MATH.addCommas(a+'')+" / "+MATH.addCommas(player.isCrafting.amount+'')+"</p></div>"
 
-                if(n<1){
+                document.getElementById('blenderSpeed').style.display='block'
+                document.getElementById('blenderSpeed').innerHTML='Speed Up (Free)'
 
-                    document.getElementById('blenderSpeed').style.display='none'
-                }
-
-                document.getElementById('blenderSpeed').innerHTML='Speed Up for '+MATH.addCommas(n+'')+(n===1?' ticket':' Tickets')
 
                 if(!n)
                     document.getElementById('blenderEnd').style.backgroundColor='rgb(0,200,0)'
@@ -26027,10 +26029,7 @@ function BeeSwarmSimulator(DATA){
             
                 document.getElementById('blenderSpeed').onclick=function(){
 
-                    if(items.ticket.amount<n) return
-
-                    items.ticket.amount-=n
-                    player.addMessage('-'+MATH.addCommas(n+'')+(n===1?' Ticket':' Tickets'))
+                    player.addMessage('Instant Speed Up!')
                     items[player.isCrafting.item].amount+=player.isCrafting.amount
                     player.addMessage('+'+MATH.addCommas(player.isCrafting.amount+'')+' '+(player.isCrafting.amount>1?MATH.doPlural(MATH.doGrammar(player.isCrafting.item)):MATH.doGrammar(player.isCrafting.item))+' (from Blender)')
                     player.stats.itemsUsingTheBlender+=player.isCrafting.amount
@@ -28220,7 +28219,14 @@ function BeeSwarmSimulator(DATA){
                 viewMatrix:[23.5,1,41-7,Math.PI,0.04],
                 cost:[(n,i=1)=>i+' honey'],
                 desc:'Can be fed to a bee to increase its bond by 10!'
-            },{
+            }
+            ],
+            currentIndex:0,message:'Explore Treat Shop',currentIncrement:0,increments:[1,10,10e1,10e2,10e3,10e4,10e5,10e6,10e7,10e8]
+        },
+
+        atomicTreat:{
+
+            items:[{
                 amountPurchased:0,maxPurchasedAmount:Infinity,
                 name:'atomicTreat',
                 slot:'item',
@@ -28229,7 +28235,7 @@ function BeeSwarmSimulator(DATA){
                 desc:'Can be fed to a bee to give it a random mutation!'
             }
             ],
-            currentIndex:0,message:'Explore Treat Shop',currentIncrement:0,increments:[1,10,10e1,10e2,10e3,10e4,10e5,10e6,10e7,10e8]
+            currentIndex:0,message:'Explore Atomic Treat Shop',currentIncrement:0,increments:[10]
         },
 
         royalJelly:{
@@ -28291,7 +28297,7 @@ function BeeSwarmSimulator(DATA){
                 desc:'Can be used to summon a festive sprout in a field!'
             }
             ],
-            currentIndex:0,message:'Explore Magic Bean Shop',currentIncrement:0,increments:[1,10]
+            currentIndex:0,message:'Explore Magic Bean Shop',currentIncrement:0,increments:[10]
         },
 
         ticket:{
