@@ -34003,7 +34003,7 @@ function BeeSwarmSimulator(DATA){
 
             field=field[(Math.random()*field.length)|0]
 
-            objects.mobs.push(new Puffshroom(field,MATH.random(0.25,0.75)*fieldInfo[field].width|0,z=MATH.random(0.25,0.75)*fieldInfo[field].length|0,5*60*10,1,'puffshroom'))
+            objects.mobs.push(new Puffshroom(field,MATH.random(0.25,0.75)*fieldInfo[field].width|0,z=MATH.random(0.25,0.75)*fieldInfo[field].length|0,5*60*5,1,'puffshroom'))
 
             setGlobalPuffshroomSpawn()
 
