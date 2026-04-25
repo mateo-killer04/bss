@@ -1216,7 +1216,7 @@ function BeeSwarmSimulator(DATA){
             minX:23.5-3,maxX:23.5+3,minY:-2,maxY:2,minZ:41-2-3,maxZ:41-2+3
         },
 
-        atomicTreat:{
+        atomicTreat_shop:{
             
             minX:23.5-3-6,maxX:23.5+3-6,minY:-2,maxY:2,minZ:41-2-3,maxZ:41-2+3
         },
