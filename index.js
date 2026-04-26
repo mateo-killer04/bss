@@ -21366,19 +21366,21 @@ function BeeSwarmSimulator(DATA){
         
     })({})
 
-    let dialogueBox=document.getElementById('dialogueBox'),
-        NPCName=document.getElementById('NPCName'),
-        NPCDialogue=document.getElementById('NPCDialogue'),
-        actionWarning=document.getElementById('actionWarning'),
-        actionName=document.getElementById('actionName'),
-        actionNameBox=document.getElementById('actionNameBox'),
-        shopUI=document.getElementById('shopUI'),
-        nonTreeShopUIs=document.getElementsByClassName('nonTreeShopUI'),
-        leftShopButton=document.getElementById('leftShopButton'),
-        rightShopButton=document.getElementById('rightShopButton'),
-        itemName=document.getElementById('itemName'),
-        itemDesc=document.getElementById('itemDesc'),
-        itemCostSVG=document.getElementById('itemCostSVG')
+        itemCostSVG=document.getElementById('itemCostSVG'),
+        coordsUI=document.createElement('div')
+
+    coordsUI.style.position='fixed'
+    coordsUI.style.top='10px'
+    coordsUI.style.right='10px'
+    coordsUI.style.backgroundColor='rgba(0,0,0,0.6)'
+    coordsUI.style.color='rgb(0,255,0)'
+    coordsUI.style.padding='8px'
+    coordsUI.style.fontFamily='monospace'
+    coordsUI.style.fontSize='14px'
+    coordsUI.style.borderRadius='5px'
+    coordsUI.style.zIndex='10000'
+    coordsUI.style.border='1px solid rgb(0,200,0)'
+    document.body.appendChild(coordsUI)
 
     let playerMesh=new Mesh(false)
 
@@ -25542,6 +25544,8 @@ function BeeSwarmSimulator(DATA){
         
         out.updateUI=function(){
             
+            coordsUI.innerHTML=`X: ${out.body.position.x.toFixed(1)} | Y: ${out.body.position.y.toFixed(1)} | Z: ${out.body.position.z.toFixed(1)}`
+            
             out.pollen=Math.round(Math.max(out.pollen,0))
             out.capacity=Math.round(out.capacity)
             out.honey=Math.round(out.honey)
@@ -25728,7 +25732,7 @@ function BeeSwarmSimulator(DATA){
                     
                     for(let i in shops){
                         
-                        if(triggers[i+'_shop'].colliding&&!out.currentShop){
+                        if(triggers[i+'_shop']&&triggers[i+'_shop'].colliding&&!out.currentShop){
                             
                             actionWarning.style.display='block'
                             actionName.innerHTML=shops[i].message
