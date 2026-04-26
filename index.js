@@ -1218,7 +1218,7 @@ function BeeSwarmSimulator(DATA){
 
         atomicTreat_shop:{
             
-            minX:-38.6-3,maxX:-38.6+3,minY:13.0-2,maxY:13.0+2,minZ:69.8-3,maxZ:69.8+3
+            minX:-38.6-3,maxX:-38.6+3,minY:13.0,maxY:13.0+4,minZ:69.8-3,maxZ:69.8+3
         },
 
         royalJelly_shop:{
@@ -28234,7 +28234,7 @@ function BeeSwarmSimulator(DATA){
                 amountPurchased:0,maxPurchasedAmount:Infinity,
                 name:'atomicTreat',
                 slot:'item',
-                viewMatrix:[-38.6, 13.0+1, 69.8-7, Math.PI, 0.04],
+                viewMatrix:[-38.6, 13.0+2, 69.8-7, Math.PI, 0.04],
                 cost:[(n,i=1)=>100000*i+' honey'],
                 desc:'Can be fed to a bee to give it a random mutation!'
             }
@@ -29315,7 +29315,7 @@ function BeeSwarmSimulator(DATA){
                 -26,10.5,-33,0,0,0.5,0.375,n,n,n,-4,-4,0,
                 -84.5,23.75,58.5,0,0,0.625,0.375,n,n,n,-4,-4,0,
                 23.5,2,41,0,0,0.75,0.375,n,n,n,-3,-3,0,
-                -38.6,17.5,69.8,0,0,0.125,0.8125,n,n,n,-3,-3,0,
+                -38.6,16.5,69.8,0,0,0.125,0.8125,1,1,1,-3,-3,0,
                 -31,10.1,-43,0,0,0.877,0.375,n,n,n,-4,-4,0,
                 -10,37.75,90.5,0,0,0.75,0.5,n,n,n,-4.5,-4,0,
 
