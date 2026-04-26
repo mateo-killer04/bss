@@ -105,7 +105,7 @@ window.dialogue_polarBear=function(player,items,NPCs){
 
     let addCommas=(s)=>{for(let i=s.length-3;i>0;i-=3){s=s.substring(0,i)+','+s.substr(i,s.length)}return s},doGrammar=(s)=>{let str=s.slice(),_s='';for(let i in str){if(str[i].toLowerCase()!==str[i]){_s=_s+' '+str[i]}else{_s=_s+str[i]}}return _s[0].toUpperCase()+_s.substring(1,_s.length)},addReward=(arr)=>{
         
-        player.addEffect('polarPower')
+        player.addEffect('polarPower',0,0,0,3)
         
         for(let i in player.quests){
             
@@ -211,6 +211,8 @@ window.dialogue_polarBear=function(player,items,NPCs){
 window.dialogue_polarBear_beesmas=function(player,items){
     
     let addCommas=(s)=>{for(let i=s.length-3;i>0;i-=3){s=s.substring(0,i)+','+s.substr(i,s.length)}return s},doGrammar=(s)=>{let str=s.slice(),_s='';for(let i in str){if(str[i].toLowerCase()!==str[i]){_s=_s+' '+str[i]}else{_s=_s+str[i]}}return _s[0].toUpperCase()+_s.substring(1,_s.length)},addReward=(arr)=>{
+        
+        player.addEffect('polarPower',0,0,0,3)
         
         for(let i in player.quests){
             
