@@ -23696,20 +23696,6 @@ function BeeSwarmSimulator(DATA){
             out.viewMatrixCopy=out.viewMatrix.slice()
             out.easeAmount=0
         }
-        
-        out.onStartShop=function(){
-
-            if(shops[out.currentShop].increments)
-                shops[out.currentShop].currentIncrement=0
-            
-            player.itemDragging=false
-            player.beequipDragging=false
-            if(document.exitPointerLock)
-                document.exitPointerLock()
-            shopUI.style.display='block'
-            for(let i=nonTreeShopUIs.length-1;i>=0;i--){
-                nonTreeShopUIs[i].style.display=shops[out.currentShop].isBeesmasTree?'none':'block'
-            }
 
             shops[out.currentShop].currentIndex=0
             out.viewMatrixToChange=shops[out.currentShop].items[shops[out.currentShop].currentIndex].viewMatrix
