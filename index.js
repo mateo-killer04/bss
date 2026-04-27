@@ -1218,7 +1218,7 @@ function BeeSwarmSimulator(DATA){
 
         atomicTreat_shop:{
             
-            minX:-38.6-3,maxX:-38.6+3,minY:18.0,maxY:18.0+5,minZ:69.8-3,maxZ:69.8+3
+            minX:23.5-3-6,maxX:23.5+3-6,minY:-2,maxY:2,minZ:41-2-3,maxZ:41-2+3
         },
 
         royalJelly_shop:{
@@ -21366,21 +21366,19 @@ function BeeSwarmSimulator(DATA){
         
     })({})
 
-        itemCostSVG=document.getElementById('itemCostSVG'),
-        coordsUI=document.createElement('div')
-
-    coordsUI.style.position='fixed'
-    coordsUI.style.top='10px'
-    coordsUI.style.right='10px'
-    coordsUI.style.backgroundColor='rgba(0,0,0,0.6)'
-    coordsUI.style.color='rgb(0,255,0)'
-    coordsUI.style.padding='8px'
-    coordsUI.style.fontFamily='monospace'
-    coordsUI.style.fontSize='14px'
-    coordsUI.style.borderRadius='5px'
-    coordsUI.style.zIndex='10000'
-    coordsUI.style.border='1px solid rgb(0,200,0)'
-    document.body.appendChild(coordsUI)
+    let dialogueBox=document.getElementById('dialogueBox'),
+        NPCName=document.getElementById('NPCName'),
+        NPCDialogue=document.getElementById('NPCDialogue'),
+        actionWarning=document.getElementById('actionWarning'),
+        actionName=document.getElementById('actionName'),
+        actionNameBox=document.getElementById('actionNameBox'),
+        shopUI=document.getElementById('shopUI'),
+        nonTreeShopUIs=document.getElementsByClassName('nonTreeShopUI'),
+        leftShopButton=document.getElementById('leftShopButton'),
+        rightShopButton=document.getElementById('rightShopButton'),
+        itemName=document.getElementById('itemName'),
+        itemDesc=document.getElementById('itemDesc'),
+        itemCostSVG=document.getElementById('itemCostSVG')
 
     let playerMesh=new Mesh(false)
 
@@ -25544,8 +25542,6 @@ function BeeSwarmSimulator(DATA){
         
         out.updateUI=function(){
             
-            coordsUI.innerHTML=`X: ${out.body.position.x.toFixed(1)} | Y: ${out.body.position.y.toFixed(1)} | Z: ${out.body.position.z.toFixed(1)}`
-            
             out.pollen=Math.round(Math.max(out.pollen,0))
             out.capacity=Math.round(out.capacity)
             out.honey=Math.round(out.honey)
@@ -25732,7 +25728,7 @@ function BeeSwarmSimulator(DATA){
                     
                     for(let i in shops){
                         
-                        if(triggers[i+'_shop']&&triggers[i+'_shop'].colliding&&!out.currentShop){
+                        if(triggers[i+'_shop'].colliding&&!out.currentShop){
                             
                             actionWarning.style.display='block'
                             actionName.innerHTML=shops[i].message
@@ -28234,7 +28230,7 @@ function BeeSwarmSimulator(DATA){
                 amountPurchased:0,maxPurchasedAmount:Infinity,
                 name:'atomicTreat',
                 slot:'item',
-                viewMatrix:[-38.6, 18.0+2, 69.8-7, Math.PI, 0.04],
+                viewMatrix:[23.5-3,1,41-7,Math.PI,0.04],
                 cost:[(n,i=1)=>100000*i+' honey'],
                 desc:'Can be fed to a bee to give it a random mutation!'
             }
@@ -29315,7 +29311,6 @@ function BeeSwarmSimulator(DATA){
                 -26,10.5,-33,0,0,0.5,0.375,n,n,n,-4,-4,0,
                 -84.5,23.75,58.5,0,0,0.625,0.375,n,n,n,-4,-4,0,
                 23.5,2,41,0,0,0.75,0.375,n,n,n,-3,-3,0,
-                -38.6,22.5,69.8,0,0,0.125,0.8125,1,1,1,-5,-5,0,
                 -31,10.1,-43,0,0,0.877,0.375,n,n,n,-4,-4,0,
                 -10,37.75,90.5,0,0,0.75,0.5,n,n,n,-4.5,-4,0,
 
