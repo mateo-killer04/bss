@@ -1218,7 +1218,7 @@ function BeeSwarmSimulator(DATA){
 
         atomicTreat_shop:{
             
-            minX:-38.6-3,maxX:-38.6+3,minY:12.0,maxY:12.0+5,minZ:69.8-3,maxZ:69.8+3
+            minX:-38.6-3,maxX:-38.6+3,minY:18.0,maxY:18.0+5,minZ:69.8-3,maxZ:69.8+3
         },
 
         royalJelly_shop:{
@@ -23696,6 +23696,20 @@ function BeeSwarmSimulator(DATA){
             out.viewMatrixCopy=out.viewMatrix.slice()
             out.easeAmount=0
         }
+        
+        out.onStartShop=function(){
+
+            if(shops[out.currentShop].increments)
+                shops[out.currentShop].currentIncrement=0
+            
+            player.itemDragging=false
+            player.beequipDragging=false
+            if(document.exitPointerLock)
+                document.exitPointerLock()
+            shopUI.style.display='block'
+            for(let i=nonTreeShopUIs.length-1;i>=0;i--){
+                nonTreeShopUIs[i].style.display=shops[out.currentShop].isBeesmasTree?'none':'block'
+            }
 
             shops[out.currentShop].currentIndex=0
             out.viewMatrixToChange=shops[out.currentShop].items[shops[out.currentShop].currentIndex].viewMatrix
@@ -28220,7 +28234,7 @@ function BeeSwarmSimulator(DATA){
                 amountPurchased:0,maxPurchasedAmount:Infinity,
                 name:'atomicTreat',
                 slot:'item',
-                viewMatrix:[-38.6, 12.0+2, 69.8-7, Math.PI, 0.04],
+                viewMatrix:[-38.6, 18.0+2, 69.8-7, Math.PI, 0.04],
                 cost:[(n,i=1)=>100000*i+' honey'],
                 desc:'Can be fed to a bee to give it a random mutation!'
             }
@@ -29301,7 +29315,7 @@ function BeeSwarmSimulator(DATA){
                 -26,10.5,-33,0,0,0.5,0.375,n,n,n,-4,-4,0,
                 -84.5,23.75,58.5,0,0,0.625,0.375,n,n,n,-4,-4,0,
                 23.5,2,41,0,0,0.75,0.375,n,n,n,-3,-3,0,
-                -38.6,16.5,69.8,0,0,0.125,0.8125,1,1,1,-3,-3,0,
+                -38.6,22.5,69.8,0,0,0.125,0.8125,1,1,1,-5,-5,0,
                 -31,10.1,-43,0,0,0.877,0.375,n,n,n,-4,-4,0,
                 -10,37.75,90.5,0,0,0.75,0.5,n,n,n,-4.5,-4,0,
 
