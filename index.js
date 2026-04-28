@@ -1602,7 +1602,7 @@ function BeeSwarmSimulator(DATA){
 
                 if(Date.now()-player.extraInfo.strawberryDispenser<60*60*1000){
 
-                    return "The Strawberry Dispenser is on cooldown! ("+MATH.doTime((60*60-(Date.now()-player.extraInfo.strawberryDispenser)*0.001)+'')+')'
+                    return "The Strawberry Dispenser is on cooldown! ("+MATH.doTime((5*60-(Date.now()-player.extraInfo.strawberryDispenser)*0.001)+'')+')'
                 }
 
             },minX:42,maxX:46,minY:7.5,maxY:10.5,minZ:9,maxZ:14,message:'Use Strawberry Dispenser',func:function(player){
@@ -1617,14 +1617,14 @@ function BeeSwarmSimulator(DATA){
                 }
 
                 items.strawberry.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,10)
                 player.addEffect('redBoost',false,false,undefined,10)
                 player.honey+=1000*(numBees+1)
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((1000*numBees)+'')+' Honey')
                 player.addMessage('+'+MATH.addCommas((numBees+3)+'')+' Strawberries')
                 player.addMessage('Activated x10 "Red Boost"')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x10 "Haste"')
             }
         },
         blueberry_dispenser:{
@@ -1636,7 +1636,7 @@ function BeeSwarmSimulator(DATA){
 
                 if(Date.now()-player.extraInfo.blueberryDispenser<60*60*1000){
 
-                    return "The Blueberry Dispenser is on cooldown! ("+MATH.doTime((60*60-(Date.now()-player.extraInfo.blueberryDispenser)*0.001)+'')+')'
+                    return "The Blueberry Dispenser is on cooldown! ("+MATH.doTime((5*60-(Date.now()-player.extraInfo.blueberryDispenser)*0.001)+'')+')'
                 }
 
             },minX:-69,maxX:-65,minY:-2,maxY:1,minZ:29.25,maxZ:34.25,message:'Use Blueberry Dispenser',func:function(player){
@@ -1651,14 +1651,14 @@ function BeeSwarmSimulator(DATA){
                 }
 
                 items.blueberry.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,10)
                 player.addEffect('blueBoost',false,false,undefined,10)
                 player.honey+=1000*(numBees+1)
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((1000*numBees)+'')+' Honey')
                 player.addMessage('+'+MATH.addCommas((numBees+3)+'')+' Blueberries')
                 player.addMessage('Activated x10 "Blue Boost"')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x10 "Haste"')
             }
         },
 
@@ -1831,15 +1831,15 @@ function BeeSwarmSimulator(DATA){
             isMachine:true,requirements:function(player){
 
                 if(items.gummyBeeEgg.amount) return 'You already own a Gummy Bee!'
-                if(items.gumdrops.amount<1500) return 'You need 2,500 gumdrops to form a Gummy Bee!'
+                if(items.gumdrops.amount<1500) return 'You need 2,000 gumdrops to form a Gummy Bee!'
 
-            },minX:-8.5-3,maxX:-8.5+3,minY:12,maxY:18,minZ:-40-3,maxZ:-40+3,message:'Combine 2,500 gumdrops to form a Gummy Bee',func:function(player){
+            },minX:-8.5-3,maxX:-8.5+3,minY:12,maxY:18,minZ:-40-3,maxZ:-40+3,message:'Combine 2,000 gumdrops to form a Gummy Bee',func:function(player){
 
-                items.gumdrops.amount-=2500
+                items.gumdrops.amount-=2000
                 items.gummyBeeEgg.amount++
                 player.updateInventory()
                 player.addMessage('🎉 You formed a Gummy Bee! 🎉',[210,30,210])
-                player.addMessage('-2,500 Gumdrops')
+                player.addMessage('-2,000 Gumdrops')
                 player.addMessage('+1 Gummy Bee Egg')
 
             }
@@ -2004,7 +2004,7 @@ function BeeSwarmSimulator(DATA){
 
                 if(Date.now()-player.extraInfo.coconutDispenser<6*60*60*1000){
 
-                    return "The Coconut Dispenser is on cooldown! ("+MATH.doTime((6*60*60-(Date.now()-player.extraInfo.coconutDispenser)*0.001)+'')+')'
+                    return "The Coconut Dispenser is on cooldown! ("+MATH.doTime((5*60-(Date.now()-player.extraInfo.coconutDispenser)*0.001)+'')+')'
                 }
 
             },minX:18-1.5,maxX:18+1.5,minY:11,maxY:16,minZ:-41,maxZ:-40.5+4,message:'Use Coconut Dispenser',func:function(player){
