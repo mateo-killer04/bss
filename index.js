@@ -28286,14 +28286,18 @@ function BeeSwarmSimulator(DATA){
                 name:'magicBean',
                 slot:'item',
                 viewMatrix:[-84.5,22,61+5,0,0.02],
-                cost:[(n,i=1)=>100000*i+' honey'],
+                cost:[(n,i=1)=>100000*i+' honey'
+                     (n,i=1)=>5*i+'ticket'
+                     ],
                 desc:'Can be used to summon a sprout in a field. Collect pollen to grow the sprout, and collect loot when it fully grows!'
             },{
                 amountPurchased:0,maxPurchasedAmount:Infinity,
                 name:'festiveBean',
                 slot:'item',
-                viewMatrix:[-84.5-5,22,61+5,0,0.02],
-                cost:[(n,i=1)=>100000*i+' honey'],
+                viewMatrix:[-84.5,22,61+5,0,0.02],
+                cost:[(n,i=1)=>100000*i+' honey',
+                     (n,i=1)=>5*i+'ticket'
+                     ],
                 desc:'Can be used to summon a festive sprout in a field!'
             }
             ],
@@ -28307,7 +28311,7 @@ function BeeSwarmSimulator(DATA){
                 name:'ticket',
                 slot:'item',
                 viewMatrix:[-11.75-4.5,35,88.25-4.5,MATH.HALF_PI+MATH.QUATER_PI,0.02],
-                cost:[(n,i=1)=>Math.min(5000*i,100000)+' honey'],
+                cost:[(n,i=1)=>Math.min(5000*i,1000000)+' honey'],
                 desc:'Can be used to purchase special items and activate machines!'
             }],
             currentIndex:0,message:'Explore Ticket Shop',currentIncrement:0,increments:[1,10,10e1,50e1]
