@@ -28286,7 +28286,7 @@ function BeeSwarmSimulator(DATA){
                 name:'magicBean',
                 slot:'item',
                 viewMatrix:[-84.5,22,61+5,0,0.02],
-                cost:[(n,i=1)=>100000*i+' honey'
+                cost:[(n,i=1)=>100000*i+' honey',
                      (n,i=1)=>5*i+'ticket'
                      ],
                 desc:'Can be used to summon a sprout in a field. Collect pollen to grow the sprout, and collect loot when it fully grows!'
