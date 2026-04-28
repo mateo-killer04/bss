@@ -1600,7 +1600,7 @@ function BeeSwarmSimulator(DATA){
                 if(!player.extraInfo.strawberryDispenser)
                     player.extraInfo.strawberryDispenser=1
 
-                if(Date.now()-player.extraInfo.strawberryDispenser<60*60*1000){
+                if(Date.now()-player.extraInfo.strawberryDispenser<5*60*1000){
 
                     return "The Strawberry Dispenser is on cooldown! ("+MATH.doTime((5*60-(Date.now()-player.extraInfo.strawberryDispenser)*0.001)+'')+')'
                 }
@@ -1634,7 +1634,7 @@ function BeeSwarmSimulator(DATA){
                 if(!player.extraInfo.blueberryDispenser)
                     player.extraInfo.blueberryDispenser=1
 
-                if(Date.now()-player.extraInfo.blueberryDispenser<60*60*1000){
+                if(Date.now()-player.extraInfo.blueberryDispenser<5*60*1000){
 
                     return "The Blueberry Dispenser is on cooldown! ("+MATH.doTime((5*60-(Date.now()-player.extraInfo.blueberryDispenser)*0.001)+'')+')'
                 }
